@@ -10,3 +10,5 @@
   
 - 추가 정렬 기능
   - Heap, Shell, Tim sort 정렬 - 추가 점수 부여
+- 사용 방법
+  - python main.py [data.txt 경로]
