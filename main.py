@@ -25,6 +25,7 @@ def bubble_sort(arr: List[int]) -> List[int]:
 
 def insertion_sort():
 
+
 def heap_sort(arr: List[int]) -> List[int]:
 
     a = arr[:]  # Copy to preserve original
