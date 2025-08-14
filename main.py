@@ -72,38 +72,17 @@ def bubble_sort(arr: List[int]) -> List[int]:
     return a
 
 def insertion_sort(arr):
+    n = len(arr)
+    for i in range(1, n):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and arr[j] > key:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
 
-def heap_sort(arr: List[int]) -> List[int]:
-
-    a = arr[:]  # Copy to preserve original
-    n = len(a)
-
-    # Maintain max-heap property
-    def sift_down(start, end):
-        root = start
-        while True:
-            child = 2 * root + 1  # Left child
-            if child > end:
-                break
-            if child + 1 <= end and a[child] < a[child + 1]:  # Select larger child
-                child += 1
-            if a[root] < a[child]:
-                a[root], a[child] = a[child], a[root]
-                root = child
-            else:
-                break
-
-    # Build max-heap
-    for start in range((n - 2) // 2, -1, -1):
-        sift_down(start, n - 1)
-
-    # Extract elements from heap
-    for end in range(n - 1, 0, -1):
-        a[0], a[end] = a[end], a[0]
-        sift_down(0, end - 1)
-
-    return a
-
+def heap_sort():
+    
 
 def read_data(path: str) -> List[int]:
     nums: List[int] = []
