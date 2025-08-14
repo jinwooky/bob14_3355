@@ -6,14 +6,23 @@ MAX_N = 10_000
 
 def merge_sort():
 
-def selection_sort():
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        min_idx = i
+        for j in range(i+1, n):
+            if arr[j] < arr[min_idx]:
+                min_idx = j
+        arr[i], arr[min_idx] = arr[min_idx], arr[i]
 
 def quick_sort():
 
 def bubble_sort():
 
-def insertion_sort():
+def insertion_sort(arr):
 
+def heap_sort():
+    
 
 def read_data(path: str) -> List[int]:
     nums: List[int] = []
