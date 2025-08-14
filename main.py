@@ -14,6 +14,9 @@ def bubble_sort():
 
 def insertion_sort():
 
+def heap_sort():
+
+
 
 def read_data(path: str) -> List[int]:
     nums: List[int] = []
