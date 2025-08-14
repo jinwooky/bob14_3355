@@ -22,7 +22,6 @@ def insertion_sort(arr):
             j -= 1
         arr[j + 1] = key
 
-
 def heap_sort():
     
 
