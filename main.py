@@ -1,5 +1,6 @@
 import argparse
 import time
+import random
 from typing import List, Callable, Dict
 
 MAX_N = 10_000
@@ -24,13 +25,6 @@ def merge_sort(arr):
     result.extend(right[j:])
     return result
 
-# 쉼표로 구분된 데이터 읽어서 정렬
-with open("data.txt", "r", encoding="utf-8") as f:
-    content = f.read()
-    data = [int(x.strip()) for x in content.split(",")]
-
-sorted_data = merge_sort(data)
-
 def selection_sort(arr):
     n = len(arr)
     for i in range(n):
@@ -40,7 +34,7 @@ def selection_sort(arr):
                 min_idx = j
         arr[i], arr[min_idx] = arr[min_idx], arr[i]
 
-def quick_sort(arr: List[int]) -> Tuple[List[int], float]:
+def quick_sort(arr: List[int]) -> tuple[List[int], float]:
     start_time = time.perf_counter()
 
     def _quick_sort(data: List[int]) -> List[int]:
@@ -133,6 +127,30 @@ def main():
     
 
     arr = read_data(args.file)
+
+    algorithms = [
+        ("Merge Sort", merge_sort),
+        ("Selection Sort", selection_sort),
+        ("Quick Sort", quick_sort),
+        ("Bubble Sort", bubble_sort),
+        ("Heap Sort", heap_sort),
+        ("Insertion Sort", insertion_sort)
+    ]
+
+    for name, func in algorithms:
+        start_time = time.perf_counter()
+        # in-place 정렬 함수는 복사본 사용
+        if func.__name__ in ("selection_sort", "insertion_sort"):
+            temp_arr = arr[:]
+            func(temp_arr)
+            sorted_arr = temp_arr
+        else:
+            sorted_arr = func(arr[:])
+        elapsed_time = time.perf_counter() - start_time
+
+        print(f"\n[{name}]")
+        print(f"정렬 결과: {sorted_arr}")
+        print(f"소요 시간: {elapsed_time:.6f}초")
 
 
 if __name__ == "__main__":
